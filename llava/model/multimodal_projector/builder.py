@@ -199,7 +199,7 @@ class Resampler(nn.Module):
 
         out = self.attn(
             self.ln_q(q + self.pos_embed[:matry_n].unsqueeze(1)),
-            self.ln_k(self._repeat(pos_embed, N)),
+            self.ln_k(x + pos_embed.unsqueeze(1)),
             self.ln_v(x),
             attn_mask=attn_mask)[0]
 
